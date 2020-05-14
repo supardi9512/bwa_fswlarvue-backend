@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashboardController@index');
 
-Auth::routes();
+Auth::routes(['register' => false]);
