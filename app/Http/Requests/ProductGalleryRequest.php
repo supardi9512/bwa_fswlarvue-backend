@@ -13,7 +13,7 @@ class ProductGalleryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'products_id' => 'required|integer|exists:products_id',
+            'products_id' => 'required|integer|exists:products,id',
             'photo' => 'required|image',
             'is_default' => 'boolean'
         ];
