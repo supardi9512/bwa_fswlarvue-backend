@@ -110,4 +110,18 @@ class TransactionController extends Controller
     {
         //
     }
+
+    public function setStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:PENDING,SUCCESS,FAILED'
+        ]);
+
+        $item = Transaction::findOrFail($id);
+        $item->transaction_status = $request->status;
+
+        $item->save();
+
+        return redirect()->route('transactions.index');
+    }
 }
